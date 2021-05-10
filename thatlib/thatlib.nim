@@ -73,16 +73,15 @@ proc is_relative_to*(path, base: string): bool {.exportpy.} =
 proc expanduser*(s: string): string {.exportpy.} =
   os.expandTilde(s)
 
-proc toFilePermissions(perm: Natural): set[FilePermission] =
-  var perm = uint(perm)
-  for permBase in [fpOthersExec, fpGroupExec, fpUserExec]:
-    if (perm and 1) != 0: result.incl permBase         # Exec
-    if (perm and 2) != 0: result.incl permBase.succ()  # Read
-    if (perm and 4) != 0: result.incl permBase.succ(2) # Write
-    perm = perm shr 3  # Shift to next permission group
-
 proc chmod*(path: string; permissions: uint) {.exportpy.} =
-  setFilePermissions(path, toFilePermissions(permissions))
+  var results: set[FilePermission]
+  var perm = permissions
+  for permBase in [fpOthersExec, fpGroupExec, fpUserExec]:
+    if (perm and 1) != 0: results.incl permBase         # Exec
+    if (perm and 2) != 0: results.incl permBase.succ()  # Read
+    if (perm and 4) != 0: results.incl permBase.succ(2) # Write
+    perm = perm shr 3  # Shift to next permission group
+  setFilePermissions(path, results)
 
 
 # ^ API mimic from Python "pathlib" ################################## v Extras
