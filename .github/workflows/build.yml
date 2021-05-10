@@ -43,7 +43,7 @@ jobs:
         NIM_COMMON_OPTIONS:    >-
           compileToC --compileOnly:on --colors:off --threads:off
           -d:release -d:danger -d:lto -d:strip --app:lib
-          -d:nimBinaryStdFiles -d:noSignalHandler
+          -d:nimBinaryStdFiles -d:noSignalHandler -f
           --opt:speed --cpu:amd64 --forceBuild --gc:arc --panics:on
           --stackTrace:off --excessiveStackTrace:off --experimental:parallel
 
