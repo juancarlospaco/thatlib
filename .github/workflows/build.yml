@@ -27,7 +27,7 @@ jobs:
 
     - uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.2.6'
+        nim-version: '1.4.0'
         no-color: true  # --noColor
 
     - name: Set Environment Variables
@@ -35,9 +35,6 @@ jobs:
       with:
         PACKAGE_NAME:          "thatlib"
         MAIN_MODULE:           "thatlib/thatlib.nim"
-        TWINE_USERNAME:        ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD:        ${{ secrets.PYPI_PASSWORD }}
-        TWINE_NON_INTERACTIVE: 1
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 
