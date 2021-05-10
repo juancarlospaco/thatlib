@@ -29,7 +29,7 @@
 
 # Requisites
 
-- CPython 3.9+ 64Bit (older Python may or may not work but is not supported).
+- CPython 3.8+ 64Bit.
 
 
 # Stars
