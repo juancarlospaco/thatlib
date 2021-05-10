@@ -33,7 +33,7 @@ jobs:
     - name: Set Environment Variables
       uses: allenevans/set-env@v2.0.0
       with:
-        NIM_VERSION:           "1.4.6"
+        NIM_VERSION:           "1.4.2"
         PACKAGE_NAME:          "thatlib"
         MAIN_MODULE:           "thatlib/thatlib.nim"
         TWINE_USERNAME:        ${{ secrets.PYPI_USERNAME }}
