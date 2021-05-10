@@ -1,5 +1,7 @@
 # ThatLib
 
+- Faster `pathlib` for Python.
+
 ![](https://img.shields.io/github/languages/top/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/languages/count/juancarlospaco/thatlib?logoColor=green&style=for-the-badge)
 ![](https://img.shields.io/github/stars/juancarlospaco/thatlib?style=for-the-badge)
@@ -22,11 +24,7 @@
 | `with_name()`   | 0.136     | 0.004     |
 | `with_name()`   | 0.181     | 0.006     |
 
-
-[**For more Examples check the Examples and Tests.**](https://github.com/juancarlospaco/thatlib/blob/master/examples)
-
-Instead of having a pair of functions with a lot of arguments that you should provide to make it work,
-we have tiny functions with very few arguments that do one thing and do it as fast as possible.
+[source](benchmark.py)
 
 
 # Dependencies
