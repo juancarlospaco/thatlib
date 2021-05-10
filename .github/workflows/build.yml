@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        platform: [ubuntu-latest, windows-latest]
+        platform: [ubuntu-latest, windows-latest]  # Mac too slow in CI.
     name: ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
