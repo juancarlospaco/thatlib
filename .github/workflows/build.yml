@@ -27,7 +27,7 @@ jobs:
 
     - uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.2.4'
+        nim-version: '1.2.6'
         no-color: true  # --noColor
 
     - name: Set Environment Variables
