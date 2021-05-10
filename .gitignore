@@ -10,3 +10,4 @@ __pycache__/
 dist/*.zip
 thatlib/*.so
 results.csv
+thatlib/benchmark.py
