@@ -156,7 +156,7 @@ proc mkhardlink*(source, destination: string) {.exportpy.} =
 proc get_size*(s: string) : BiggestInt {.exportpy.} =
   getFileSize(s)
 
-func is_hidden_path*(s: string) : bool {.exportpy.} =
+proc is_hidden_path*(s: string) : bool {.exportpy.} =
   isHidden(s)
 
 func is_valid_path*(s: string) : bool {.exportpy.} =
