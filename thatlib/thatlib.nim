@@ -13,13 +13,13 @@ proc mkdir*(s: string): string {.exportpy.} =
 proc rmdir*(s: string) {.exportpy.} =
   removeDir(s)
 
-func is_file*(s: string): bool {.exportpy.} =
+proc is_file*(s: string): bool {.exportpy.} =
   fileExists(s)
 
-func is_dir*(s: string): bool {.exportpy.} =
+proc is_dir*(s: string): bool {.exportpy.} =
   dirExists(s)
 
-func exists*(s: string): bool {.exportpy.} =
+proc exists*(s: string): bool {.exportpy.} =
   fileExists(s) or dirExists(s)
 
 proc rename*(source, destination: string): bool {.exportpy.} =
