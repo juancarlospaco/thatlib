@@ -73,7 +73,7 @@ proc is_relative_to*(path, base: string): bool {.exportpy.} =
 proc expanduser*(s: string): string {.exportpy.} =
   os.expandTilde(s)
 
-func toFilePermissions(perm: Natural): set[FilePermission] {.inline.} =
+func toFilePermissions(perm: Natural): set[FilePermission] =
   var perm = uint(perm)
   for permBase in [fpOthersExec, fpGroupExec, fpUserExec]:
     if (perm and 1) != 0: result.incl permBase         # Exec
