@@ -9,3 +9,4 @@ __pycache__/
 *.c.o
 dist/*.zip
 thatlib/*.so
+results.csv
