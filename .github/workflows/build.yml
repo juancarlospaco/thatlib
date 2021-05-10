@@ -27,13 +27,12 @@ jobs:
 
     - uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.4.6'
+        nim-version: '1.4.2'
         no-color: true  # --noColor
 
     - name: Set Environment Variables
       uses: allenevans/set-env@v2.0.0
       with:
-        NIM_VERSION:           "1.2.6"
         PACKAGE_NAME:          "thatlib"
         MAIN_MODULE:           "thatlib/thatlib.nim"
         TWINE_USERNAME:        ${{ secrets.PYPI_USERNAME }}
