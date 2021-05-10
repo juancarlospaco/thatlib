@@ -1,3 +1,10 @@
 nimcache/
 nimblecache/
 htmldocs/
+*.dll
+*.so
+*.pyd
+__pycache__/
+*.pyc
+*.c.o
+dist/*.zip
