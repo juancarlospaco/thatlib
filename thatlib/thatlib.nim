@@ -13,9 +13,6 @@ proc mkdir*(s: string): string {.exportpy.} =
 proc rmdir*(s: string) {.exportpy.} =
   removeDir(s)
 
-proc touch*(s: string) {.exportpy.} =
-  writeFile(s, "")
-
 func is_file*(s: string): bool {.exportpy.} =
   fileExists(s)
 
