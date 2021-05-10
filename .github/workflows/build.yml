@@ -27,7 +27,7 @@ jobs:
 
     - uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.4.2'
+        nim-version: '1.2.0'
         no-color: true  # --noColor
 
     - name: Set Environment Variables
@@ -39,12 +39,6 @@ jobs:
         TWINE_PASSWORD:        ${{ secrets.PYPI_PASSWORD }}
         TWINE_NON_INTERACTIVE: 1
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-        NIM_COMMON_OPTIONS:    >-
-          compileToC --compileOnly:on --colors:off --threads:off
-          -d:release -d:danger -d:lto -d:strip --app:lib
-          -d:nimBinaryStdFiles -d:noSignalHandler -f
-          --opt:speed --cpu:amd64 --forceBuild --gc:arc --panics:on
-          --stackTrace:off --excessiveStackTrace:off --experimental:parallel
 
 
     - name: Nimble
