@@ -138,9 +138,6 @@ func symlink_exists*(s: string): bool {.exportpy.} =
 proc get_exe*(s: string; followSymlinks: bool = true): string {.exportpy.} =
   findExe(s, followSymlinks)
 
-proc get_permissions*(s: string): uint {.exportpy.} =
-  fromFilePermissions(getFilePermissions(s))
-
 proc mksymlink*(source, destination: string): uint {.exportpy.} =
   createSymlink(source, destination)
 
