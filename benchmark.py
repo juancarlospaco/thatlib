@@ -9,8 +9,7 @@ import csv
 
 
 def run_test(library, repetitions, setup_test, run_test):
-    TIMER = timeit.default_timer
-    mytime = timeit.timeit(stmt=run_test, setup=setup_test, number=repetitions, timer=TIMER)
+    mytime = timeit.timeit(stmt=run_test, setup=setup_test, number=repetitions)
     print(f"{library} =\t{round(mytime, 4)}")
     result = [library, repetitions, mytime]
     return result
