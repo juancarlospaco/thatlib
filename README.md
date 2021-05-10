@@ -24,7 +24,7 @@
 | `with_name()`   | 0.136     | 0.004     |
 | `with_name()`   | 0.181     | 0.006     |
 
-[source](benchmark.py)
+[source](https://github.com/juancarlospaco/thatlib/blob/nim/benchmark.py)
 
 
 # Dependencies
