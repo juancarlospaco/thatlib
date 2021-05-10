@@ -1,5 +1,5 @@
 ## * Faster `pathlib` for Python.
-import std/[strutils, os], fusion/filepermissions, nimpy
+import std/[strutils, os], nimpy
 
 proc cwd*(): string {.exportpy.} =
   getCurrentDir()
@@ -67,14 +67,22 @@ proc write_bytes*(path, data: string): string {.exportpy.} =
 proc read_bytes*(path: string): string {.exportpy.} =
   readFile(path)
 
-proc chmod*(path: string; permission: uint) {.exportpy.} =
-  filepermissions.chmod path, permission
-
 proc is_relative_to*(path, base: string): bool {.exportpy.} =
   os.isRelativeTo(path, base)
 
 proc expanduser*(s: string): string {.exportpy.} =
   os.expandTilde(s)
+
+func toFilePermissions(perm: Natural): set[FilePermission] {.inline.} =
+  var perm = uint(perm)
+  for permBase in [fpOthersExec, fpGroupExec, fpUserExec]:
+    if (perm and 1) != 0: result.incl permBase         # Exec
+    if (perm and 2) != 0: result.incl permBase.succ()  # Read
+    if (perm and 4) != 0: result.incl permBase.succ(2) # Write
+    perm = perm shr 3  # Shift to next permission group
+
+proc chmod*(path: string; permissions: uint) {.exportpy.} =
+  setFilePermissions(path, toFilePermissions(permissions))
 
 
 # ^ API mimic from Python "pathlib" ################################## v Extras
