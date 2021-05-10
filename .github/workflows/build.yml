@@ -51,7 +51,7 @@ jobs:
     - name: Nimble
       run: |
         nimble -y refresh
-        nimble -y install nimpy
+        nimble -y install nimpy fusion
 
 
     - uses: juancarlospaco/nimpretty-action@main
