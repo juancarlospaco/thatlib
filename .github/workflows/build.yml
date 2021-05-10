@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, windows-latest]
     name: ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
@@ -27,7 +27,7 @@ jobs:
 
     - uses: jiro4989/setup-nim-action@v1
       with:
-        nim-version: '1.4.0'
+        nim-version: '1.4.6'
         no-color: true  # --noColor
 
     - name: Set Environment Variables
