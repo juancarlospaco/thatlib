@@ -170,7 +170,7 @@ proc copy_dir_permissions(source, dest: string; ignore_errors: bool = true) {.ex
 
 proc walk*(folderpath: string, extensions: seq[string] = @[""], followlinks : bool = false, yieldfiles: bool = true, debugs: bool = false, check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  let extused {.noalias.} = create(bool, sizeOf(bool))  # Optimization.
+  let extused {.noalias.} = create(bool, sizeOf(bool))
   extused[] = extensions != @[""] and extensions.len > 0
   for item in walkDirRec(folderpath, {if yieldfiles: pcFile else: pcDir}, {if followlinks: pcLinkToDir else: pcDir}, checkDir=check_folders):
     if unlikely(debugs): echo item
@@ -178,7 +178,7 @@ proc walk*(folderpath: string, extensions: seq[string] = @[""], followlinks : bo
       for ext in extensions:
         if item.normalize.endsWith(ext): result.add item
     else: result.add item
-  dealloc extused
+  if extused != nil: dealloc extused
 
 proc walk_glob*(globpattern: string; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
