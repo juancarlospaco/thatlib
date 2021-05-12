@@ -31,7 +31,7 @@
 
 # Requisites
 
-- CPython 3.6+ 64Bit.
+- Python 3.6+ 64Bit.
 
 
 # PYPI
