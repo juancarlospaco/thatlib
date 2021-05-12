@@ -2,7 +2,7 @@
 
 - Faster `pathlib` for Python.
 
-![](thatlib-logo.jpg)
+![](https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/thatlib-logo.jpg "Faster pathlib for Python")
 
 ![](https://img.shields.io/github/languages/top/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/languages/count/juancarlospaco/thatlib?logoColor=green&style=for-the-badge)
