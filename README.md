@@ -25,6 +25,7 @@
 | `with_stem()`   | 0.162     | 0.008     |
 | `with_name()`   | 0.136     | 0.004     |
 | `with_suffix()` | 0.181     | 0.006     |
+| See Benchmark for more                  |           
 
 [source](https://github.com/juancarlospaco/thatlib/blob/nim/benchmark.py)
 
