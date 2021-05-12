@@ -29,7 +29,12 @@
 
 # Requisites
 
-- CPython 3.8+ 64Bit.
+- CPython 3.6+ 64Bit.
+
+
+# PYPI
+
+- https://pypi.org/project/thatlib
 
 
 # Stars
