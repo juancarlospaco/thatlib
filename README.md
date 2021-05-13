@@ -15,7 +15,7 @@
 
 # Use
 
-- [See the examples.](https://github.com/juancarlospaco/thatlib/tree/nim/examples)
+- [See the examples folder (20+ simple tiny examples).](https://github.com/juancarlospaco/thatlib/tree/nim/examples)
 
 
 # Requisites
