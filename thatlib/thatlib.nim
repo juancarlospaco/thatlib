@@ -1,4 +1,4 @@
-## * Faster `pathlib` for Python.
+## .. image:: https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png
 import std/[strutils, os], nimpy
 
 proc cwd*(): string {.exportpy.} =
