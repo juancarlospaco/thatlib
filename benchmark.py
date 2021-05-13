@@ -6,6 +6,7 @@ import time
 import string
 import argparse
 import csv
+import pandas
 
 
 def run_test(library, repetitions, setup_test, run_test):
@@ -67,6 +68,14 @@ def run_all_benchmarks(repetitions=10_000, output_file="results.csv"):
                 outwriter.writerow(result)
 
 
+def plot_benchmark_results(in_path="results.csv", output_path="results_graph.png"):
+    data = pandas.read_csv(in_path)
+    chart = data.plot.bar(x='library', y='time', figsize=(10, 4), color=["red", "green"], title="Pathlib Versus Thatlib", rot=85)
+    chart.figure.tight_layout()
+    chart.figure.savefig(output_path)
+    return
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Benchmarks for path libs")
     parser.add_argument('--repetitions', metavar='c', type=int, default=10_000, help="Repetitions")
@@ -74,3 +83,4 @@ if __name__ == '__main__':
     assert args.get('repetitions') > 100, "Repetitions must be > 100."
     print(args)
     run_all_benchmarks(**args)
+    plot_benchmark_results()
