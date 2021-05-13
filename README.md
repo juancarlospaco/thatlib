@@ -1,7 +1,5 @@
 # ThatLib
 
-- Faster `pathlib` for Python.
-
 ![](https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/thatlib-logo.jpg "Faster pathlib for Python")
 
 [![Benchmark Results](https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png "Benchmark Results")](https://youtu.be/QiKwnlyhKrk?t=5)
