@@ -50,11 +50,17 @@ def run_all_benchmarks(repetitions=10_000, output_file="results.csv"):
     tests.append(('pathlib expanduser()', 'import pathlib', "pathlib.Path('~/foo').expanduser()"))
     tests.append(('thatlib expanduser()', 'import thatlib', "thatlib.expanduser('~/foo')"))
 
+    tests.append(('pathlib joinpath()', 'import pathlib', "pathlib.Path('foo').joinpath('bar')"))
+    tests.append(('thatlib joinpath()', 'import thatlib', "thatlib.joinpath(['foo', 'bar'])"))
+
     # tests.append(('pathlib write_bytes()', 'import pathlib', "pathlib.Path('/tmp/foo.txt').write_bytes(b'bar')"))
     # tests.append(('thatlib write_bytes()', 'import thatlib', "thatlib.write_bytes('/tmp/foo.txt', b'bar')"))
 
     # tests.append(('pathlib read_bytes()', 'import pathlib', "pathlib.Path('/tmp/foo.txt').read_bytes()"))
     # tests.append(('thatlib read_bytes()', 'import thatlib', "thatlib.read_bytes('/tmp/foo.txt')"))
+
+    tests.append(('pathlib chmod()', 'import pathlib', "pathlib.Path('/tmp/foo.txt').chmod(0o666)"))
+    tests.append(('thatlib chmod()', 'import thatlib', "thatlib.chmod('/tmp/foo.txt', 0o666)"))
 
     for test in tests:
         my_result = run_test(test[0], repetitions, test[1], test[2])
