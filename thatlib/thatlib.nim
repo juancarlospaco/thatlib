@@ -168,11 +168,11 @@ proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.
 proc copy_dir_permissions(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyDirWithPermissions(source, dest, ignore_errors)
 
-proc walk*(folderpath: string, extensions: seq[string] = @[""], followlinks : bool = false, yieldfiles: bool = true, debugs: bool = false, check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
+proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  let extused {.noalias.} = create(bool, sizeOf(bool))
+  let extused {.noalias.} = create bool
   extused[] = extensions != @[""] and extensions.len > 0
-  for item in walkDirRec(folderpath, {if yieldfiles: pcFile else: pcDir}, {if followlinks: pcLinkToDir else: pcDir}, checkDir=check_folders):
+  for item in walkDirRec(folderpath, {if yieldfiles: pcFile else: pcDir}, {if followlinks: pcLinkToDir else: pcDir}, checkDir = check_folders):
     if unlikely(debugs): echo item
     if unlikely(extused[]):
       for ext in extensions:
