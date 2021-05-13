@@ -4,6 +4,8 @@
 
 ![](https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/thatlib-logo.jpg "Faster pathlib for Python")
 
+[![Benchmark Results](https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png "Benchmark Results")](https://youtu.be/QiKwnlyhKrk?t=5)
+
 ![](https://img.shields.io/github/languages/top/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/languages/count/juancarlospaco/thatlib?logoColor=green&style=for-the-badge)
 ![](https://img.shields.io/github/stars/juancarlospaco/thatlib?style=for-the-badge)
@@ -25,7 +27,7 @@
 | `with_stem()`   | 0.162     | 0.008     |
 | `with_name()`   | 0.136     | 0.004     |
 | `with_suffix()` | 0.181     | 0.006     |
-| See Benchmark for more                  |           
+| See Benchmark for more                  |
 
 [source](https://github.com/juancarlospaco/thatlib/blob/nim/benchmark.py)
 
