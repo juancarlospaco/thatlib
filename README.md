@@ -15,22 +15,6 @@
 ![](https://img.shields.io/github/issues-pr-raw/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/last-commit/juancarlospaco/thatlib?style=for-the-badge)
 
-| operation       | `pathlib` | `thatlib` |
-|-----------------|-----------|-----------|
-| `cwd()`         | 0.137     | 0.010     |
-| `home()`        | 0.155     | 0.003     |
-| `is_file()`     | 0.187     | 0.020     |
-| `exists()`      | 0.179     | 0.012     |
-| `is_absolute()` | 0.824     | 0.001     |
-| `joinpath()`    | 0.138     | 0.008     |
-| `with_suffix()` | 0.134     | 0.004     |
-| `with_stem()`   | 0.162     | 0.008     |
-| `with_name()`   | 0.136     | 0.004     |
-| `with_suffix()` | 0.181     | 0.006     |
-| See Benchmark for more                  |
-
-[source](https://github.com/juancarlospaco/thatlib/blob/nim/benchmark.py)
-
 
 # Requisites
 
