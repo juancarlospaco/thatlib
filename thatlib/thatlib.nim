@@ -7,20 +7,20 @@ proc cwd*(): string {.exportpy.} =
 proc home*(): string {.exportpy.} =
   getHomeDir()
 
-proc mkdir*(s: string): string {.exportpy.} =
-  createDir(s)
+proc mkdir*(path: string): string {.exportpy.} =
+  createDir(path)
 
-proc rmdir*(s: string) {.exportpy.} =
-  removeDir(s)
+proc rmdir*(path: string) {.exportpy.} =
+  removeDir(path)
 
-proc is_file*(s: string): bool {.exportpy.} =
-  fileExists(s)
+proc is_file*(path: string): bool {.exportpy.} =
+  fileExists(path)
 
-proc is_dir*(s: string): bool {.exportpy.} =
-  dirExists(s)
+proc is_dir*(path: string): bool {.exportpy.} =
+  dirExists(path)
 
-proc exists*(s: string): bool {.exportpy.} =
-  fileExists(s) or dirExists(s)
+proc exists*(path: string): bool {.exportpy.} =
+  fileExists(path) or dirExists(path)
 
 proc rename*(source, destination: string): bool {.exportpy.} =
   moveFile(source, destination)
@@ -29,37 +29,37 @@ proc replace*(source, destination: string): string {.exportpy.} =
   moveFile(source, destination)
   result = destination
 
-proc resolve*(s: string): string {.exportpy.} =
-  absolutePath(s)
+proc resolve*(path: string): string {.exportpy.} =
+  absolutePath(path)
 
 func samefile*(pathA, pathB: string): bool {.exportpy.} =
   sameFile(pathA, pathB)
 
-func is_absolute*(s: string): bool {.exportpy.} =
-  os.isAbsolute(s)
+func is_absolute*(path: string): bool {.exportpy.} =
+  os.isAbsolute(path)
 
-func joinpath*(s: openArray[string]): string {.exportpy.} =
-  os.joinPath(s)
+func joinpath*(paths: openArray[string]): string {.exportpy.} =
+  os.joinPath(paths)
 
-func with_suffix*(s, ext: string): string {.exportpy.} =
-  changeFileExt(s, ext)
+func with_suffix*(path, ext: string): string {.exportpy.} =
+  changeFileExt(path, ext)
 
-func with_stem*(s, stem: string): string {.exportpy.} =
-  let f = splitFile(s)
+func with_stem*(path, stem: string): string {.exportpy.} =
+  let f = splitFile(path)
   result = f.dir / stem & f.ext
 
-func with_name*(s, name: string): string {.exportpy.} =
-  let f = splitFile(s)
+func with_name*(path, name: string): string {.exportpy.} =
+  let f = splitFile(path)
   result = f.dir / name
 
-func suffix*(s: string): string {.exportpy.} =
-  splitFile(s).ext
+func suffix*(path: string): string {.exportpy.} =
+  splitFile(path).ext
 
-func stem*(s: string): string {.exportpy.} =
-  splitFile(s).name
+func stem*(path: string): string {.exportpy.} =
+  splitFile(path).name
 
-func parent*(s: string): string {.exportpy.} =
-  splitFile(s).dir
+func parent*(path: string): string {.exportpy.} =
+  splitFile(path).dir
 
 proc write_bytes*(path, data: string): string {.exportpy.} =
   writeFile(path, data)
@@ -70,8 +70,8 @@ proc read_bytes*(path: string): string {.exportpy.} =
 proc is_relative_to*(path, base: string): bool {.exportpy.} =
   os.isRelativeTo(path, base)
 
-proc expanduser*(s: string): string {.exportpy.} =
-  os.expandTilde(s)
+proc expanduser*(path: string): string {.exportpy.} =
+  os.expandTilde(path)
 
 proc chmod*(path: string; permissions: uint) {.exportpy.} =
   var results: set[FilePermission]
@@ -126,41 +126,41 @@ proc get_conf_dir*(): string {.exportpy.} =
 proc get_temporary_dir*(): string {.exportpy.} =
   getTempDir()
 
-func paths_quoted*(args: openArray[string]): string {.exportpy.} =
-  quoteShellCommand(args)
+func paths_quoted*(paths: openArray[string]): string {.exportpy.} =
+  quoteShellCommand(paths)
 
-proc is_file_newer*(a, b: string): bool {.exportpy.} =
-  fileNewer(a, b)
+proc is_file_newer*(pathA, pathB: string): bool {.exportpy.} =
+  fileNewer(pathA, pathB)
 
-func symlink_exists*(s: string): bool {.exportpy.} =
-  symlinkExists(s)
+func symlink_exists*(path: string): bool {.exportpy.} =
+  symlinkExists(path)
 
-proc get_exe*(s: string; followSymlinks: bool = true): string {.exportpy.} =
-  findExe(s, followSymlinks)
+proc get_exe*(path: string; followSymlinks: bool = true): string {.exportpy.} =
+  findExe(path, followSymlinks)
 
 proc mksymlink*(source, destination: string): uint {.exportpy.} =
   createSymlink(source, destination)
 
-proc get_symlink*(s: string): string {.exportpy.} =
-  expandSymlink(s)
+proc get_symlink*(path: string): string {.exportpy.} =
+  expandSymlink(path)
 
-proc try_rmfile*(s: string): bool {.exportpy.} =
-  tryRemoveFile(s)
+proc try_rmfile*(path: string): bool {.exportpy.} =
+  tryRemoveFile(path)
 
-proc exists_create_dir*(s: string): bool {.exportpy.} =
-  existsOrCreateDir(s)
+proc exists_create_dir*(path: string): bool {.exportpy.} =
+  existsOrCreateDir(path)
 
 proc mkhardlink*(source, destination: string) {.exportpy.} =
   createHardlink(source, destination)
 
-proc get_size*(s: string) : BiggestInt {.exportpy.} =
-  getFileSize(s)
+proc get_size*(path: string) : BiggestInt {.exportpy.} =
+  getFileSize(path)
 
-proc is_hidden_path*(s: string) : bool {.exportpy.} =
-  isHidden(s)
+proc is_hidden_path*(path: string) : bool {.exportpy.} =
+  isHidden(path)
 
-func is_valid_path*(s: string) : bool {.exportpy.} =
-  isValidFilename(s)
+func is_valid_path*(path: string) : bool {.exportpy.} =
+  isValidFilename(path)
 
 proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyFileWithPermissions(source, dest, ignore_errors)
