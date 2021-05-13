@@ -56,10 +56,12 @@ function main() {
     }
   }
 }
+
+window.addEventListener('DOMContentLoaded', main);
 </script>
 
 </head>
-<body onload="main()">
+<body>
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">thatlib</h1>
@@ -96,286 +98,295 @@ function main() {
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">get_exe
       <li><a class="reference" href="#get_exe%2Cstring%2Cbool"
-    title="get_exe(path: string; followSymlinks: bool = true): string">get_exe,<wbr>string,<wbr>bool</a></li>
+    title="get_exe(path: string; followSymlinks: bool = true): string">get_exe(path: string; followSymlinks: bool = true): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">get_file_info
+      <li><a class="reference" href="#get_file_info%2Cstring%2Cbool"
+    title="get_file_info(path: string; follow_symlinks: bool = true): tuple[
+    size, link_count, block_size: int64]">get_file_info(path: string; follow_symlinks: bool = true): tuple[
+    size, link_count, block_size: int64]</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">mkdir
+      <li><a class="reference" href="#mkdir%2Cstring"
+    title="mkdir(path: string)">mkdir(path: string)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">replace
+      <li><a class="reference" href="#replace%2Cstring%2Cstring"
+    title="replace(source, destination: string): string">replace(source, destination: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">with_stem
+      <li><a class="reference" href="#with_stem%2Cstring%2Cstring"
+    title="with_stem(path, stem: string): string">with_stem(path, stem: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">read_bytes
+      <li><a class="reference" href="#read_bytes%2Cstring"
+    title="read_bytes(path: string): string">read_bytes(path: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">mksymlink
+      <li><a class="reference" href="#mksymlink%2Cstring%2Cstring"
+    title="mksymlink(source, destination: string): uint">mksymlink(source, destination: string): uint</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">walk
       <li><a class="reference" href="#walk%2Cstring%2Cseq%5Bstring%5D%2Cbool%2Cbool%2Cbool%2Cbool%2CPositive"
     title="walk(folderpath: string; extensions: seq[string] = @[&quot;&quot;];
      followlinks: bool = false; yieldfiles: bool = true; debugs: bool = false;
-     check_folders: bool = false; prealloc: Positive = 99): seq[string]">walk,<wbr>string,<wbr>seq[string],<wbr>bool,<wbr>bool,<wbr>bool,<wbr>bool,<wbr>Positive</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">mkdir
-      <li><a class="reference" href="#mkdir%2Cstring"
-    title="mkdir(path: string): string">mkdir,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">replace
-      <li><a class="reference" href="#replace%2Cstring%2Cstring"
-    title="replace(source, destination: string): string">replace,<wbr>string,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">read_bytes
-      <li><a class="reference" href="#read_bytes%2Cstring"
-    title="read_bytes(path: string): string">read_bytes,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">mksymlink
-      <li><a class="reference" href="#mksymlink%2Cstring%2Cstring"
-    title="mksymlink(source, destination: string): uint">mksymlink,<wbr>string,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">get_conf_dir
-      <li><a class="reference" href="#get_conf_dir"
-    title="get_conf_dir(): string">get_conf_dir</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">resolve
-      <li><a class="reference" href="#resolve%2Cstring"
-    title="resolve(path: string): string">resolve,<wbr>string</a></li>
+     check_folders: bool = false; prealloc: Positive = 99): seq[string]">walk(folderpath: string; extensions: seq[string] = @[&quot;&quot;];
+     followlinks: bool = false; yieldfiles: bool = true; debugs: bool = false;
+     check_folders: bool = false; prealloc: Positive = 99): seq[string]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">is_relative_to
       <li><a class="reference" href="#is_relative_to%2Cstring%2Cstring"
-    title="is_relative_to(path, base: string): bool">is_relative_to,<wbr>string,<wbr>string</a></li>
+    title="is_relative_to(path, base: string): bool">is_relative_to(path, base: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">is_dir
       <li><a class="reference" href="#is_dir%2Cstring"
-    title="is_dir(path: string): bool">is_dir,<wbr>string</a></li>
+    title="is_dir(path: string): bool">is_dir(path: string): bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">is_file
-      <li><a class="reference" href="#is_file%2Cstring"
-    title="is_file(path: string): bool">is_file,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">cwd
-      <li><a class="reference" href="#cwd"
-    title="cwd(): string">cwd</a></li>
+  <ul class="simple nested-toc-section">is_root_dir
+      <li><a class="reference" href="#is_root_dir%2Cstring"
+    title="is_root_dir(path: string): bool">is_root_dir(path: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">copy_file_permissions
       <li><a class="reference" href="#copy_file_permissions%2Cstring%2Cstring%2Cbool"
-    title="copy_file_permissions(source, dest: string; ignore_errors: bool = true)">copy_file_permissions,<wbr>string,<wbr>string,<wbr>bool</a></li>
+    title="copy_file_permissions(source, dest: string; ignore_errors: bool = true)">copy_file_permissions(source, dest: string; ignore_errors: bool = true)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">walk_files
       <li><a class="reference" href="#walk_files%2Cstring%2CPositive"
-    title="walk_files(globpattern: string; prealloc: Positive = 99): seq[string]">walk_files,<wbr>string,<wbr>Positive</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">rmdir
-      <li><a class="reference" href="#rmdir%2Cstring"
-    title="rmdir(path: string)">rmdir,<wbr>string</a></li>
+    title="walk_files(globpattern: string; prealloc: Positive = 99): seq[string]">walk_files(globpattern: string; prealloc: Positive = 99): seq[string]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">exists
       <li><a class="reference" href="#exists%2Cstring"
-    title="exists(path: string): bool">exists,<wbr>string</a></li>
+    title="exists(path: string): bool">exists(path: string): bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">is_file_newer
-      <li><a class="reference" href="#is_file_newer%2Cstring%2Cstring"
-    title="is_file_newer(pathA, pathB: string): bool">is_file_newer,<wbr>string,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">compare_paths
+      <li><a class="reference" href="#compare_paths%2Cstring%2Cstring"
+    title="compare_paths(pathA, pathB: string): int">compare_paths(pathA, pathB: string): int</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">chmod
       <li><a class="reference" href="#chmod%2Cstring%2Cuint"
-    title="chmod(path: string; permissions: uint)">chmod,<wbr>string,<wbr>uint</a></li>
+    title="chmod(path: string; permissions: uint)">chmod(path: string; permissions: uint)</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">walk_folders
-      <li><a class="reference" href="#walk_folders%2Cstring%2CPositive"
-    title="walk_folders(globpattern: string; prealloc: Positive = 99): seq[string]">walk_folders,<wbr>string,<wbr>Positive</a></li>
+  <ul class="simple nested-toc-section">is_file_newer
+      <li><a class="reference" href="#is_file_newer%2Cstring%2Cstring"
+    title="is_file_newer(pathA, pathB: string): bool">is_file_newer(pathA, pathB: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">lines
       <li><a class="reference" href="#lines%2Cstring%2Cint%2Cint"
-    title="lines(path: string; start: int = 0; ends: int = 1): seq[string]">lines,<wbr>string,<wbr>int,<wbr>int</a></li>
+    title="lines(path: string; start: int = 0; ends: int = 1): seq[string]">lines(path: string; start: int = 0; ends: int = 1): seq[string]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">get_symlink
       <li><a class="reference" href="#get_symlink%2Cstring"
-    title="get_symlink(path: string): string">get_symlink,<wbr>string</a></li>
+    title="get_symlink(path: string): string">get_symlink(path: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">copy_dir_permissions
+      <li><a class="reference" href="#copy_dir_permissions%2Cstring%2Cstring%2Cbool"
+    title="copy_dir_permissions(source, dest: string; ignore_errors: bool = true)">copy_dir_permissions(source, dest: string; ignore_errors: bool = true)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">parent
+      <li><a class="reference" href="#parent%2Cstring"
+    title="parent(path: string): string">parent(path: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">stem
+      <li><a class="reference" href="#stem%2Cstring"
+    title="stem(path: string): string">stem(path: string): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">write_bytes
       <li><a class="reference" href="#write_bytes%2Cstring%2Cstring"
-    title="write_bytes(path, data: string): string">write_bytes,<wbr>string,<wbr>string</a></li>
+    title="write_bytes(path, data: string): string">write_bytes(path, data: string): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">try_rmfile
-      <li><a class="reference" href="#try_rmfile%2Cstring"
-    title="try_rmfile(path: string): bool">try_rmfile,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">with_suffix
+      <li><a class="reference" href="#with_suffix%2Cstring%2Cstring"
+    title="with_suffix(path, ext: string): string">with_suffix(path, ext: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">normalized
+      <li><a class="reference" href="#normalized%2Cstring"
+    title="normalized(path: string): string">normalized(path: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">symlink_exists
+      <li><a class="reference" href="#symlink_exists%2Cstring"
+    title="symlink_exists(path: string): bool">symlink_exists(path: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">is_hidden_path
       <li><a class="reference" href="#is_hidden_path%2Cstring"
-    title="is_hidden_path(path: string): bool">is_hidden_path,<wbr>string</a></li>
+    title="is_hidden_path(path: string): bool">is_hidden_path(path: string): bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">counted_lines
-      <li><a class="reference" href="#counted_lines%2Cstring"
-    title="counted_lines(path: string): int">counted_lines,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">mkhardlink
-      <li><a class="reference" href="#mkhardlink%2Cstring%2Cstring"
-    title="mkhardlink(source, destination: string)">mkhardlink,<wbr>string,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">walk_glob
-      <li><a class="reference" href="#walk_glob%2Cstring%2CPositive"
-    title="walk_glob(globpattern: string; prealloc: Positive = 99): seq[string]">walk_glob,<wbr>string,<wbr>Positive</a></li>
+  <ul class="simple nested-toc-section">is_valid_path
+      <li><a class="reference" href="#is_valid_path%2Cstring"
+    title="is_valid_path(path: string): bool">is_valid_path(path: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">rename
       <li><a class="reference" href="#rename%2Cstring%2Cstring"
-    title="rename(source, destination: string): bool">rename,<wbr>string,<wbr>string</a></li>
+    title="rename(source, destination: string)">rename(source, destination: string)</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">expanduser
-      <li><a class="reference" href="#expanduser%2Cstring"
-    title="expanduser(path: string): string">expanduser,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">get_size
-      <li><a class="reference" href="#get_size%2Cstring"
-    title="get_size(path: string): BiggestInt">get_size,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">replaced
+      <li><a class="reference" href="#replaced%2Cstring%2CopenArray%5B%5D"
+    title="replaced(path: string; replacements: openArray[(string, string)]): string">replaced(path: string; replacements: openArray[(string, string)]): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">get_temporary_dir
       <li><a class="reference" href="#get_temporary_dir"
-    title="get_temporary_dir(): string">get_temporary_dir</a></li>
+    title="get_temporary_dir(): string">get_temporary_dir(): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">line
-      <li><a class="reference" href="#line%2Cstring%2CNatural"
-    title="line(path: string; line_number: Natural): string">line,<wbr>string,<wbr>Natural</a></li>
+  <ul class="simple nested-toc-section">parents
+      <li><a class="reference" href="#parents%2Cstring"
+    title="parents(path: string): string">parents(path: string): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">exists_create_dir
-      <li><a class="reference" href="#exists_create_dir%2Cstring"
-    title="exists_create_dir(path: string): bool">exists_create_dir,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">tokenized
+      <li><a class="reference" href="#tokenized%2Cstring"
+    title="tokenized(path: string): seq[tuple[token: string, isSep: bool]]">tokenized(path: string): seq[tuple[token: string, isSep: bool]]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">home
       <li><a class="reference" href="#home"
-    title="home(): string">home</a></li>
+    title="home(): string">home(): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">walk_simple
       <li><a class="reference" href="#walk_simple%2Cstring%2Cbool%2Cbool%2CPositive"
     title="walk_simple(folderpath: string; relative: bool = false;
-            check_folders: bool = false; prealloc: Positive = 99): seq[string]">walk_simple,<wbr>string,<wbr>bool,<wbr>bool,<wbr>Positive</a></li>
-
-  </ul>
-
-  </ul>
-</li>
-<li>
-  <a class="reference reference-toplevel" href="#13" id="63">Funcs</a>
-  <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">with_stem
-      <li><a class="reference" href="#with_stem%2Cstring%2Cstring"
-    title="with_stem(path, stem: string): string">with_stem,<wbr>string,<wbr>string</a></li>
+            check_folders: bool = false; prealloc: Positive = 99): seq[string]">walk_simple(folderpath: string; relative: bool = false;
+            check_folders: bool = false; prealloc: Positive = 99): seq[string]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">paths_quoted
       <li><a class="reference" href="#paths_quoted%2CopenArray%5Bstring%5D"
-    title="paths_quoted(paths: openArray[string]): string">paths_quoted,<wbr>openArray[string]</a></li>
+    title="paths_quoted(paths: openArray[string]): string">paths_quoted(paths: openArray[string]): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">get_conf_dir
+      <li><a class="reference" href="#get_conf_dir"
+    title="get_conf_dir(): string">get_conf_dir(): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">suffix
       <li><a class="reference" href="#suffix%2Cstring"
-    title="suffix(path: string): string">suffix,<wbr>string</a></li>
+    title="suffix(path: string): string">suffix(path: string): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">is_root_dir
-      <li><a class="reference" href="#is_root_dir%2Cstring"
-    title="is_root_dir(path: string): bool">is_root_dir,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">resolve
+      <li><a class="reference" href="#resolve%2Cstring"
+    title="resolve(path: string): string">resolve(path: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">is_file
+      <li><a class="reference" href="#is_file%2Cstring"
+    title="is_file(path: string): bool">is_file(path: string): bool</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">cwd
+      <li><a class="reference" href="#cwd"
+    title="cwd(): string">cwd(): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">joinpath
       <li><a class="reference" href="#joinpath%2CopenArray%5Bstring%5D"
-    title="joinpath(paths: openArray[string]): string">joinpath,<wbr>openArray[string]</a></li>
+    title="joinpath(paths: openArray[string]): string">joinpath(paths: openArray[string]): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">rmdir
+      <li><a class="reference" href="#rmdir%2Cstring%2Cbool"
+    title="rmdir(path: string; check: bool = false)">rmdir(path: string; check: bool = false)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">samefile
       <li><a class="reference" href="#samefile%2Cstring%2Cstring"
-    title="samefile(pathA, pathB: string): bool">samefile,<wbr>string,<wbr>string</a></li>
+    title="samefile(pathA, pathB: string): bool">samefile(pathA, pathB: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">path_splitted
       <li><a class="reference" href="#path_splitted%2Cstring"
-    title="path_splitted(path: string): tuple[dir, name, ext: string]">path_splitted,<wbr>string</a></li>
+    title="path_splitted(path: string): tuple[dir, name, ext: string]">path_splitted(path: string): tuple[dir, name, ext: string]</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">compare_paths
-      <li><a class="reference" href="#compare_paths%2Cstring%2Cstring"
-    title="compare_paths(pathA, pathB: string): int">compare_paths,<wbr>string,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">walk_folders
+      <li><a class="reference" href="#walk_folders%2Cstring%2CPositive"
+    title="walk_folders(globpattern: string; prealloc: Positive = 99): seq[string]">walk_folders(globpattern: string; prealloc: Positive = 99): seq[string]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">is_absolute
       <li><a class="reference" href="#is_absolute%2Cstring"
-    title="is_absolute(path: string): bool">is_absolute,<wbr>string</a></li>
+    title="is_absolute(path: string): bool">is_absolute(path: string): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">get_suffix_index
       <li><a class="reference" href="#get_suffix_index%2Cstring"
-    title="get_suffix_index(path: string): int">get_suffix_index,<wbr>string</a></li>
+    title="get_suffix_index(path: string): int">get_suffix_index(path: string): int</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">parent
-      <li><a class="reference" href="#parent%2Cstring"
-    title="parent(path: string): string">parent,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">try_rmfile
+      <li><a class="reference" href="#try_rmfile%2Cstring"
+    title="try_rmfile(path: string): bool">try_rmfile(path: string): bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">stem
-      <li><a class="reference" href="#stem%2Cstring"
-    title="stem(path: string): string">stem,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">counted_lines
+      <li><a class="reference" href="#counted_lines%2Cstring"
+    title="counted_lines(path: string): int">counted_lines(path: string): int</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">normalized
-      <li><a class="reference" href="#normalized%2Cstring"
-    title="normalized(path: string): string">normalized,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">mkhardlink
+      <li><a class="reference" href="#mkhardlink%2Cstring%2Cstring"
+    title="mkhardlink(source, destination: string)">mkhardlink(source, destination: string)</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">with_suffix
-      <li><a class="reference" href="#with_suffix%2Cstring%2Cstring"
-    title="with_suffix(path, ext: string): string">with_suffix,<wbr>string,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">walk_glob
+      <li><a class="reference" href="#walk_glob%2Cstring%2CPositive"
+    title="walk_glob(globpattern: string; prealloc: Positive = 99): seq[string]">walk_glob(globpattern: string; prealloc: Positive = 99): seq[string]</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">symlink_exists
-      <li><a class="reference" href="#symlink_exists%2Cstring"
-    title="symlink_exists(path: string): bool">symlink_exists,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">expanduser
+      <li><a class="reference" href="#expanduser%2Cstring"
+    title="expanduser(path: string): string">expanduser(path: string): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">is_valid_path
-      <li><a class="reference" href="#is_valid_path%2Cstring"
-    title="is_valid_path(path: string): bool">is_valid_path,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">get_size
+      <li><a class="reference" href="#get_size%2Cstring"
+    title="get_size(path: string): BiggestInt">get_size(path: string): BiggestInt</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">replaced
-      <li><a class="reference" href="#replaced%2Cstring%2CopenArray%5B%5D"
-    title="replaced(path: string; replacements: openArray[(string, string)]): string">replaced,<wbr>string,<wbr>openArray[]</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">parents
-      <li><a class="reference" href="#parents%2Cstring"
-    title="parents(path: string): string">parents,<wbr>string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">tokenized
-      <li><a class="reference" href="#tokenized%2Cstring"
-    title="tokenized(path: string): seq[tuple[token: string, isSep: bool]]">tokenized,<wbr>string</a></li>
+  <ul class="simple nested-toc-section">line
+      <li><a class="reference" href="#line%2Cstring%2CNatural"
+    title="line(path: string; line_number: Natural): string">line(path: string; line_number: Natural): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">with_name
       <li><a class="reference" href="#with_name%2Cstring%2Cstring"
-    title="with_name(path, name: string): string">with_name,<wbr>string,<wbr>string</a></li>
+    title="with_name(path, name: string): string">with_name(path, name: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">exists_create_dir
+      <li><a class="reference" href="#exists_create_dir%2Cstring"
+    title="exists_create_dir(path: string): bool">exists_create_dir(path: string): bool</a></li>
 
   </ul>
 
@@ -385,6 +396,7 @@ function main() {
 </ul>
 
   </div>
+  
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
@@ -393,226 +405,388 @@ function main() {
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="cwd"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#cwd"><span class="Identifier">cwd</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cwd"><span class="Identifier">cwd</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="home"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#home"><span class="Identifier">home</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#home"><span class="Identifier">home</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="mkdir,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#mkdir%2Cstring"><span class="Identifier">mkdir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
-                                   <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#mkdir%2Cstring"><span class="Identifier">mkdir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
+                           <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="rmdir,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#rmdir%2Cstring"><span class="Identifier">rmdir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
-                           <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="rmdir,string,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#rmdir%2Cstring%2Cbool"><span class="Identifier">rmdir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">check</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="is_file,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#is_file%2Cstring"><span class="Identifier">is_file</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#is_file%2Cstring"><span class="Identifier">is_file</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="is_dir,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#is_dir%2Cstring"><span class="Identifier">is_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#is_dir%2Cstring"><span class="Identifier">is_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="exists,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#exists%2Cstring"><span class="Identifier">exists</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exists%2Cstring"><span class="Identifier">exists</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="rename,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#rename%2Cstring%2Cstring"><span class="Identifier">rename</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#rename%2Cstring%2Cstring"><span class="Identifier">rename</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="replace,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#replace%2Cstring%2Cstring"><span class="Identifier">replace</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#replace%2Cstring%2Cstring"><span class="Identifier">replace</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="resolve,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#resolve%2Cstring"><span class="Identifier">resolve</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#resolve%2Cstring"><span class="Identifier">resolve</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="samefile,string,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#samefile%2Cstring%2Cstring"><span class="Identifier">samefile</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="is_absolute,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#is_absolute%2Cstring"><span class="Identifier">is_absolute</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="joinpath,openArray[string]"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#joinpath%2CopenArray%5Bstring%5D"><span class="Identifier">joinpath</span></a><span class="Other">(</span><span class="Identifier">paths</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="with_suffix,string,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#with_suffix%2Cstring%2Cstring"><span class="Identifier">with_suffix</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">ext</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="with_stem,string,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#with_stem%2Cstring%2Cstring"><span class="Identifier">with_stem</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">stem</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="with_name,string,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#with_name%2Cstring%2Cstring"><span class="Identifier">with_name</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="suffix,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#suffix%2Cstring"><span class="Identifier">suffix</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="stem,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#stem%2Cstring"><span class="Identifier">stem</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="parent,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#parent%2Cstring"><span class="Identifier">parent</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="write_bytes,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#write_bytes%2Cstring%2Cstring"><span class="Identifier">write_bytes</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#write_bytes%2Cstring%2Cstring"><span class="Identifier">write_bytes</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="read_bytes,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#read_bytes%2Cstring"><span class="Identifier">read_bytes</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#read_bytes%2Cstring"><span class="Identifier">read_bytes</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="is_relative_to,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#is_relative_to%2Cstring%2Cstring"><span class="Identifier">is_relative_to</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">base</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#is_relative_to%2Cstring%2Cstring"><span class="Identifier">is_relative_to</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">base</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="expanduser,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#expanduser%2Cstring"><span class="Identifier">expanduser</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-                                        <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#expanduser%2Cstring"><span class="Identifier">expanduser</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                                        <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="chmod,string,uint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#chmod%2Cstring%2Cuint"><span class="Identifier">chmod</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">permissions</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#chmod%2Cstring%2Cuint"><span class="Identifier">chmod</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">permissions</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">WriteDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="parents,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#parents%2Cstring"><span class="Identifier">parents</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="lines,string,int,int"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#lines%2Cstring%2Cint%2Cint"><span class="Identifier">lines</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">;</span> <span class="Identifier">ends</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#lines%2Cstring%2Cint%2Cint"><span class="Identifier">lines</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">;</span> <span class="Identifier">ends</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="line,string,Natural"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#line%2Cstring%2CNatural"><span class="Identifier">line</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">line_number</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#line%2Cstring%2CNatural"><span class="Identifier">line</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">line_number</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="counted_lines,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#counted_lines%2Cstring"><span class="Identifier">counted_lines</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#counted_lines%2Cstring"><span class="Identifier">counted_lines</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="tokenized,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#tokenized%2Cstring"><span class="Identifier">tokenized</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">token</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">isSep</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="replaced,string,openArray[]"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#replaced%2Cstring%2CopenArray%5B%5D"><span class="Identifier">replaced</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">replacements</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="normalized,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#normalized%2Cstring"><span class="Identifier">normalized</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="is_root_dir,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#is_root_dir%2Cstring"><span class="Identifier">is_root_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="get_suffix_index,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#get_suffix_index%2Cstring"><span class="Identifier">get_suffix_index</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="path_splitted,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#path_splitted%2Cstring"><span class="Identifier">path_splitted</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">dir</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">ext</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="compare_paths,string,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#compare_paths%2Cstring%2Cstring"><span class="Identifier">compare_paths</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="get_conf_dir"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#get_conf_dir"><span class="Identifier">get_conf_dir</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_conf_dir"><span class="Identifier">get_conf_dir</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="get_temporary_dir"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#get_temporary_dir"><span class="Identifier">get_temporary_dir</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-                                   <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_temporary_dir"><span class="Identifier">get_temporary_dir</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                                   <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="paths_quoted,openArray[string]"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#paths_quoted%2CopenArray%5Bstring%5D"><span class="Identifier">paths_quoted</span></a><span class="Other">(</span><span class="Identifier">paths</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="is_file_newer,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#is_file_newer%2Cstring%2Cstring"><span class="Identifier">is_file_newer</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#is_file_newer%2Cstring%2Cstring"><span class="Identifier">is_file_newer</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="symlink_exists,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#symlink_exists%2Cstring"><span class="Identifier">symlink_exists</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="get_exe,string,bool"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#get_exe%2Cstring%2Cbool"><span class="Identifier">get_exe</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">followSymlinks</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_exe%2Cstring%2Cbool"><span class="Identifier">get_exe</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">followSymlinks</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="mksymlink,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#mksymlink%2Cstring%2Cstring"><span class="Identifier">mksymlink</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#mksymlink%2Cstring%2Cstring"><span class="Identifier">mksymlink</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="get_symlink,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#get_symlink%2Cstring"><span class="Identifier">get_symlink</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_symlink%2Cstring"><span class="Identifier">get_symlink</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="try_rmfile,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#try_rmfile%2Cstring"><span class="Identifier">try_rmfile</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#try_rmfile%2Cstring"><span class="Identifier">try_rmfile</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="exists_create_dir,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#exists_create_dir%2Cstring"><span class="Identifier">exists_create_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exists_create_dir%2Cstring"><span class="Identifier">exists_create_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="mkhardlink,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#mkhardlink%2Cstring%2Cstring"><span class="Identifier">mkhardlink</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#mkhardlink%2Cstring%2Cstring"><span class="Identifier">mkhardlink</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="get_size,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#get_size%2Cstring"><span class="Identifier">get_size</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">BiggestInt</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_size%2Cstring"><span class="Identifier">get_size</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">BiggestInt</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="is_hidden_path,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#is_hidden_path%2Cstring"><span class="Identifier">is_hidden_path</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#is_hidden_path%2Cstring"><span class="Identifier">is_hidden_path</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="is_valid_path,string"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#is_valid_path%2Cstring"><span class="Identifier">is_valid_path</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="copy_file_permissions,string,string,bool"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#copy_file_permissions%2Cstring%2Cstring%2Cbool"><span class="Identifier">copy_file_permissions</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">dest</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">ignore_errors</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#copy_file_permissions%2Cstring%2Cstring%2Cbool"><span class="Identifier">copy_file_permissions</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">dest</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">ignore_errors</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="copy_dir_permissions,string,string,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#copy_dir_permissions%2Cstring%2Cstring%2Cbool"><span class="Identifier">copy_dir_permissions</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">dest</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">ignore_errors</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="get_file_info,string,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#get_file_info%2Cstring%2Cbool"><span class="Identifier">get_file_info</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">follow_symlinks</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
+    <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">link_count</span><span class="Other">,</span> <span class="Identifier">block_size</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -622,16 +796,16 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#walk%2Cstring%2Cseq%5Bstring%5D%2Cbool%2Cbool%2Cbool%2Cbool%2CPositive"><span class="Identifier">walk</span></a><span class="Other">(</span><span class="Identifier">folderpath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">extensions</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;&quot;</span><span class="Other">]</span><span class="Other">;</span>
           <span class="Identifier">followlinks</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">yieldfiles</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span>
           <span class="Identifier">debugs</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">check_folders</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
-          <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+          <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="walk_glob,string,Positive"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#walk_glob%2Cstring%2CPositive"><span class="Identifier">walk_glob</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#walk_glob%2Cstring%2CPositive"><span class="Identifier">walk_glob</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -640,171 +814,23 @@ function main() {
 <a id="walk_simple,string,bool,bool,Positive"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#walk_simple%2Cstring%2Cbool%2Cbool%2CPositive"><span class="Identifier">walk_simple</span></a><span class="Other">(</span><span class="Identifier">folderpath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">relative</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
                  <span class="Identifier">check_folders</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span>
-    <span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">string</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="walk_folders,string,Positive"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#walk_folders%2Cstring%2CPositive"><span class="Identifier">walk_folders</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#walk_folders%2Cstring%2CPositive"><span class="Identifier">walk_folders</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="walk_files,string,Positive"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#walk_files%2Cstring%2CPositive"><span class="Identifier">walk_files</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-
-</dl></div>
-<div class="section" id="13">
-<h1><a class="toc-backref" href="#13">Funcs</a></h1>
-<dl class="item">
-<a id="samefile,string,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#samefile%2Cstring%2Cstring"><span class="Identifier">samefile</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="is_absolute,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#is_absolute%2Cstring"><span class="Identifier">is_absolute</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="joinpath,openArray[string]"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#joinpath%2CopenArray%5Bstring%5D"><span class="Identifier">joinpath</span></a><span class="Other">(</span><span class="Identifier">paths</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="with_suffix,string,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#with_suffix%2Cstring%2Cstring"><span class="Identifier">with_suffix</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">ext</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="with_stem,string,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#with_stem%2Cstring%2Cstring"><span class="Identifier">with_stem</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">stem</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="with_name,string,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#with_name%2Cstring%2Cstring"><span class="Identifier">with_name</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="suffix,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#suffix%2Cstring"><span class="Identifier">suffix</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="stem,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#stem%2Cstring"><span class="Identifier">stem</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="parent,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#parent%2Cstring"><span class="Identifier">parent</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="parents,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#parents%2Cstring"><span class="Identifier">parents</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="tokenized,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#tokenized%2Cstring"><span class="Identifier">tokenized</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">token</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">isSep</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="replaced,string,openArray[]"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#replaced%2Cstring%2CopenArray%5B%5D"><span class="Identifier">replaced</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">replacements</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="normalized,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#normalized%2Cstring"><span class="Identifier">normalized</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="is_root_dir,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#is_root_dir%2Cstring"><span class="Identifier">is_root_dir</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="get_suffix_index,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#get_suffix_index%2Cstring"><span class="Identifier">get_suffix_index</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="path_splitted,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#path_splitted%2Cstring"><span class="Identifier">path_splitted</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">dir</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">ext</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="compare_paths,string,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#compare_paths%2Cstring%2Cstring"><span class="Identifier">compare_paths</span></a><span class="Other">(</span><span class="Identifier">pathA</span><span class="Other">,</span> <span class="Identifier">pathB</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="paths_quoted,openArray[string]"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#paths_quoted%2CopenArray%5Bstring%5D"><span class="Identifier">paths_quoted</span></a><span class="Other">(</span><span class="Identifier">paths</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="symlink_exists,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#symlink_exists%2Cstring"><span class="Identifier">symlink_exists</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="is_valid_path,string"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#is_valid_path%2Cstring"><span class="Identifier">is_valid_path</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#walk_files%2Cstring%2CPositive"><span class="Identifier">walk_files</span></a><span class="Other">(</span><span class="Identifier">globpattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">prealloc</span><span class="Other">:</span> <span class="Identifier">Positive</span> <span class="Other">=</span> <span class="DecNumber">99</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -820,7 +846,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-05-13 15:38:42 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-05-13 21:12:47 UTC</small>
       </div>
     </div>
   </div>
