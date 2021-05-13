@@ -13,6 +13,10 @@
 ![](https://img.shields.io/github/issues-pr-raw/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/last-commit/juancarlospaco/thatlib?style=for-the-badge)
 
+# Use
+
+- [See the examples.](https://github.com/juancarlospaco/thatlib/tree/nim/examples)
+
 
 # Requisites
 
