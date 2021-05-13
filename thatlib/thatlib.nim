@@ -7,11 +7,11 @@ proc cwd*(): string {.exportpy.} =
 proc home*(): string {.exportpy.} =
   getHomeDir()
 
-proc mkdir*(path: string): string {.exportpy.} =
+proc mkdir*(path: string) {.exportpy.} =
   createDir(path)
 
-proc rmdir*(path: string) {.exportpy.} =
-  removeDir(path)
+proc rmdir*(path: string; check: bool = false) {.exportpy.} =
+  removeDir(path, check)
 
 proc is_file*(path: string): bool {.exportpy.} =
   fileExists(path)
@@ -22,7 +22,7 @@ proc is_dir*(path: string): bool {.exportpy.} =
 proc exists*(path: string): bool {.exportpy.} =
   fileExists(path) or dirExists(path)
 
-proc rename*(source, destination: string): bool {.exportpy.} =
+proc rename*(source, destination: string) {.exportpy.} =
   moveFile(source, destination)
 
 proc replace*(source, destination: string): string {.exportpy.} =
@@ -99,8 +99,8 @@ proc line*(path: string; line_number: Natural): string {.exportpy.} =
 proc counted_lines*(path: string): int {.exportpy.} =
   readFile(path).countLines
 
-func tokenized*(path: string): seq[tuple[token: string, isSep: bool]] {.exportpy.} =
-  for item in strutils.tokenize(path): result.add item
+proc tokenized*(path: string): seq[tuple[token: string, isSep: bool]] {.exportpy.} =
+  for item in tokenize(readFile(path)): result.add item
 
 func replaced*(path: string; replacements: openArray[(string, string)]): string {.exportpy.} =
   path.multiReplace(replacements)
@@ -165,8 +165,12 @@ func is_valid_path*(path: string) : bool {.exportpy.} =
 proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyFileWithPermissions(source, dest, ignore_errors)
 
-proc copy_dir_permissions(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
+proc copy_dir_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyDirWithPermissions(source, dest, ignore_errors)
+
+proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, link_count, block_size: int64] {.exportpy.} =
+  let f = os.getFileInfo(path, follow_symlinks)
+  result = (size: int64(f.size), link_count: int64(f.linkCount - 1), block_size: int64(f.blockSize))
 
 proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
@@ -176,22 +180,22 @@ proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bo
     if unlikely(debugs): echo item
     if unlikely(extused[]):
       for ext in extensions:
-        if item.normalize.endsWith(ext): result.add item
-    else: result.add item
+        if item.normalize.endsWith(ext): result.add absolutePath(item)
+    else: result.add absolutePath(item)
   if extused != nil: dealloc extused
 
 proc walk_glob*(globpattern: string; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  for item in walkPattern(globpattern): result.add item
+  for item in walkPattern(globpattern): result.add absolutePath(item)
 
 proc walk_simple*(folderpath: string; relative: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  for item in walkDirRec(folderpath, relative=relative, checkDir=check_folders): result.add item
+  for item in walkDirRec(folderpath, relative=relative, checkDir=check_folders): result.add absolutePath(item)
 
 proc walk_folders*(globpattern: string; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  for item in walkDirs(globpattern): result.add item
+  for item in walkDirs(globpattern): result.add absolutePath(item)
 
 proc walk_files*(globpattern: string; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
-  for item in walkFiles(globpattern): result.add item
+  for item in walkFiles(globpattern): result.add absolutePath(item)
