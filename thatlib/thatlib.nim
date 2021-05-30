@@ -1,5 +1,7 @@
 ## .. image:: https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png
 import std/[strutils, os], nimpy
+from std/json import JsonNode, newJInt, newJFloat, newJBool, newJString, newJObject, newJArray, add, parseJson, pretty
+from std/parseutils import parseSaturatedNatural, parseFloat
 
 proc cwd*(): string {.exportpy.} =
   getCurrentDir()
@@ -199,3 +201,68 @@ proc walk_folders*(globpattern: string; prealloc: Positive = 99): seq[string] {.
 proc walk_files*(globpattern: string; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
   for item in walkFiles(globpattern): result.add absolutePath(item)
+
+proc parseBool(s: string): bool {.inline.} =
+  case s
+  of "y", "Y", "1",  "ON", "On", "oN", "on",
+     "yes", "YES", "YEs", "YeS", "Yes", "yES", "yEs", "yeS",
+     "TRUE", "TRUe", "TRuE", "TRue", "TrUE", "TrUe", "TruE", "True", "tRUE",
+     "tRUe", "tRuE", "tRue", "trUE", "trUe", "truE", "true": result = true
+  of "n", "N", "0", "NO", "No", "nO", "no", "",
+     "OFF", "OFf", "OfF", "Off", "oFF", "oFf", "ofF", "off",
+     "FALSE", "FALSe", "FALsE", "FALse", "FAlSE", "FAlSe", "FAlsE", "FAlse",
+     "FaLSE", "FaLSe", "FaLsE", "FaLse", "FalSE", "FalSe", "FalsE", "False",
+     "fALSE", "fALSe", "fALsE", "fALse", "fAlSE", "fAlSe", "fAlsE", "fAlse",
+     "faLSE", "faLSe", "faLsE", "faLse", "falSE", "falSe", "falsE", "false": result = false
+  else: doAssert false, "cannot interpret as a bool"
+
+func strip(s: var string) =
+  var first = 0
+  var last = s.high
+  while first <= last  and s[first] in {' ', '\t'}: inc first
+  while last  >= first and s[last]  in {' ', '\t'}: dec last
+  if unlikely(first > last):
+    s.setLen 0
+    return
+  template impl =
+    for index in first .. last: s[index - first] = s[index]
+  if first > 0:
+    when nimvm: impl()
+    else:
+      when not declared(moveMem): impl()
+      else:
+        when defined(nimSeqsV2) and declared(prepareMutation): prepareMutation(s)
+        moveMem(addr s[0], addr s[first], last - first + 1)
+  s.setLen last - first + 1
+
+proc dotenv*(path: string): string {.exportpy.} =
+  var s = readFile(path)
+  var temp = newJObject()
+  if likely(s.len > 1):
+    for zz in s.split('\n'):        # Split by lines
+      var z = zz                    # k= is the shortest possible
+      strip(z)
+      if z.len > 1 and z[0] != '#': # No comment lines, no empty lines
+        let k_v = z.split('=')
+        if k_v.len >= 2:            # k sep v
+          var k = k_v[0]            # Key name
+          strip(k)
+          var v = k_v[1].split('#')[0] # remove inline comments
+          strip(v)
+          var tipe = k_v[^1].split('#')[1]  # Get type annotation
+          strip(tipe)
+          if k.len > 0:   # k must not be empty string
+            case tipe
+            of "bool":   temp.add k, newJBool(parseBool(v))
+            of "string": temp.add k, newJString(v)
+            of "json":   temp.add k, parseJson(v)
+            of "int":
+              var i = 0
+              discard parseSaturatedNatural(v, i)
+              temp.add k, newJInt(i)
+            of "float":
+              var f = 0.0
+              discard parseFloat(v, f)
+              temp.add k, newJFloat(f)
+            else: doAssert false, "Type must be 1 of int, float, bool, string, json"
+  result = temp.pretty
