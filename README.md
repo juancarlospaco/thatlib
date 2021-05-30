@@ -29,7 +29,7 @@ Types are enforced via a comment, so it is still a "vanilla" `.env`.
 
 Type-safe `.env` file can be used with unsafe `.env` parsers, legacy parsers will ignore the comment.
 
-Example:
+Examples:
 
 ```ini
 # This is a comment
@@ -40,6 +40,9 @@ DB_TIMEOUT=42      # int
 DELAY=3.14         # float
 ACTIVE=true        # bool
 ```
+
+- `.env` file example https://github.com/juancarlospaco/thatlib/blob/nim/examples/.env
+- Python use example https://github.com/juancarlospaco/thatlib/blob/nim/examples/example_dotenv.py
 
 
 # Requisites
