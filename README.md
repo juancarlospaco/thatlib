@@ -19,6 +19,29 @@
 - https://juancarlospaco.github.io/thatlib
 
 
+# Type-safe DotEnv
+
+Thatlib has builtin support for Type-safe `.env`.
+
+Type-safe `.env` file is just a `.env` but Typed.
+
+Types are enforced via a comment, so it is still a "vanilla" `.env`.
+
+Type-safe `.env` file can be used with unsafe `.env` parsers, legacy parsers will ignore the comment.
+
+Example:
+
+```ini
+# This is a comment
+DB_HOST=localhost  # string
+DB_USER=root       # string
+DB_PASS="123"      # string
+DB_TIMEOUT=42      # int
+DELAY=3.14         # float
+ACTIVE=true        # bool
+```
+
+
 # Requisites
 
 - Python 3.6+ 64Bit.
