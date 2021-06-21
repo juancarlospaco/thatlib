@@ -235,6 +235,11 @@ func strip(s: var string) =
         moveMem(addr s[0], addr s[first], last - first + 1)
   s.setLen last - first + 1
 
+func validateKey(s: string): bool {.inline.} =
+  result = true
+  for c in s:
+    if c notin {'a'..'z', 'A'..'Z', '0'..'9', '_'}: return false
+
 proc dotenv*(path: string): string {.exportpy.} =
   var s = readFile(path)
   var temp = newJObject()
@@ -247,6 +252,7 @@ proc dotenv*(path: string): string {.exportpy.} =
         if k_v.len >= 2:            # k sep v
           var k = k_v[0]            # Key name
           strip(k)
+          doAssert validateKey(k), "DotEnv key must be a non-empty ASCII string ([a-zA-Z0-9_])"
           var v = k_v[1].split('#')[0] # remove inline comments
           strip(v)
           var tipe = k_v[^1].split('#')[1]  # Get type annotation
