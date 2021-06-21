@@ -34,6 +34,9 @@ proc replace*(source, destination: string): string {.exportpy.} =
 proc resolve*(path: string): string {.exportpy.} =
   absolutePath(path)
 
+proc absolute*(path: string): string {.exportpy.} =
+  absolutePath(path)
+
 func samefile*(pathA, pathB: string): bool {.exportpy.} =
   sameFile(pathA, pathB)
 
@@ -74,6 +77,9 @@ proc is_relative_to*(path, base: string): bool {.exportpy.} =
 
 proc expanduser*(path: string): string {.exportpy.} =
   os.expandTilde(path)
+
+proc as_uri*(path: string): string {.exportpy.} =
+  (when defined(windows): "file:///" else: "file://") / absolutePath(path)
 
 proc chmod*(path: string; permissions: uint) {.exportpy.} =
   var results: set[FilePermission]
