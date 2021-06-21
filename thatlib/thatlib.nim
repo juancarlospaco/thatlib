@@ -98,6 +98,18 @@ proc chmod*(path: string; permissions: uint) {.exportpy.} =
 # ^ API mimic from Python "pathlib" ################################## v Extras
 
 
+proc is_root*(): bool {.exportpy.} =
+  os.isAdmin()
+
+proc symlink*(source, destination: string) {.exportpy.} =
+  os.createSymlink(source, destination)
+
+proc hardlink*(source, destination: string) {.exportpy.} =
+  os.createHardlink(source, destination)
+
+proc env_vars_pairs*(): seq[(string, string)] {.exportpy.} =
+  for item in os.envPairs(): result.add item
+
 func parents*(path: string): string {.exportpy.} =
   parentDir(path)
 
