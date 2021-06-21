@@ -101,6 +101,12 @@ proc chmod*(path: string; permissions: uint) {.exportpy.} =
 func parents*(path: string): string {.exportpy.} =
   parentDir(path)
 
+func is_fs_casesensitive*(): bool {.exportpy.} =
+  os.FileSystemCaseSensitive
+
+func get_dynlib_format*(): string {.exportpy.} =
+  os.DynlibFormat
+
 proc lines*(path: string; start: int = 0; ends: int = 1): seq[string] {.exportpy.} =
   readFile(path).splitLines[start .. ^ends]
 
