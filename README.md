@@ -29,6 +29,8 @@ Types are enforced via a comment, so it is still a "vanilla" `.env`.
 
 Type-safe `.env` file can be used with unsafe `.env` parsers, legacy parsers will ignore the comment.
 
+Keys must be a non-empty ASCII string `[a-zA-Z0-9_]`, keys are validated.
+
 Examples:
 
 ```ini
