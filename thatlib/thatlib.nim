@@ -81,6 +81,9 @@ proc expanduser*(path: string): string {.exportpy.} =
 proc as_uri*(path: string): string {.exportpy.} =
   (when defined(windows): "file:///" else: "file://") / absolutePath(path)
 
+proc parts*(path: string): seq[string] {.exportpy.} =
+  absolutePath(path).split(DirSep)
+
 proc chmod*(path: string; permissions: uint) {.exportpy.} =
   var results: set[FilePermission]
   var perm = permissions
