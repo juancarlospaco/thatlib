@@ -27,9 +27,7 @@
 
 # Type-safe DotEnv
 
-Thatlib has builtin support for Type-safe `.env`.
-
-Type-safe `.env` file is just a `.env` but Typed.
+Thatlib has builtin support for Type-safe `.env`. Type-safe `.env` file is just a `.env` but Typed.
 
 Types are enforced via a comment, so it is still a "vanilla" `.env`.
 
