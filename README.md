@@ -13,6 +13,12 @@
 ![](https://img.shields.io/github/issues-pr-raw/juancarlospaco/thatlib?style=for-the-badge)
 ![](https://img.shields.io/github/last-commit/juancarlospaco/thatlib?style=for-the-badge)
 
+
+# Using Pathlib can make your project +50x Slower
+
+[![Using Pathlib can make your project 50x Slower](https://img.youtube.com/vi/tFrh9hKMS6Y/0.jpg)](https://www.youtube.com/watch?v=tFrh9hKMS6Y)
+
+
 # Use
 
 - [See the examples folder (20+ simple tiny examples).](https://github.com/juancarlospaco/thatlib/tree/nim/examples)
