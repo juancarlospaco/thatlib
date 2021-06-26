@@ -41,6 +41,8 @@ Parses the same `.env` file from the vanilla implementation tests.
 
 Several orders of magnitude faster than the vanilla implementation.
 
+Implementation is ~ 50 lines of code.
+
 Examples:
 
 ```ini
