@@ -37,6 +37,8 @@ Type-safe `.env` file can be used with unsafe `.env` parsers, legacy parsers wil
 
 Keys must be a non-empty ASCII string `[a-zA-Z0-9_]`, keys are validated. Key-Value separator must be `=`.
 
+Parses the same `.env` file from the vanilla implementation tests.
+
 Examples:
 
 ```ini
