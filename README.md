@@ -21,6 +21,7 @@
 
 # Use
 
+- Same API as `pathlib`, nothing new to remember.
 - [See the examples folder (20+ simple tiny examples).](https://github.com/juancarlospaco/thatlib/tree/nim/examples)
 - https://juancarlospaco.github.io/thatlib
 
