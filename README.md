@@ -39,9 +39,7 @@ Keys must be a non-empty ASCII string `[a-zA-Z0-9_]`, keys are validated. Key-Va
 
 Parses the same `.env` file from the vanilla implementation tests.
 
-Several orders of magnitude faster than the vanilla implementation.
-
-Implementation is ~ 50 lines of code.
+Several orders of magnitude faster than the vanilla implementation. Implementation is ~ 50 lines of code.
 
 Examples:
 
