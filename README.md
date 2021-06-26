@@ -66,6 +66,11 @@ ACTIVE=true        # bool
 - https://pypi.org/project/thatlib
 
 
+# Dependencies
+
+- None.
+
+
 # Stars
 
 ![](https://starchart.cc/juancarlospaco/thatlib.svg)
