@@ -99,7 +99,7 @@ proc chmod*(path: string; permissions: uint) {.exportpy.} =
 
 
 proc is_root*(): bool {.exportpy.} =
-  when defined(isAdmin): os.isAdmin()
+  when compiles(os.isAdmin): os.isAdmin()
 
 proc symlink*(source, destination: string) {.exportpy.} =
   os.createSymlink(source, destination)
@@ -199,7 +199,7 @@ proc copy_dir_permissions*(source, dest: string; ignore_errors: bool = true) {.e
 
 proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, link_count, block_size: int64] {.exportpy.} =
   let f = os.getFileInfo(path, follow_symlinks)
-  result = (size: int64(f.size), link_count: int64(f.linkCount - 1), block_size: int64(f.blockSize))
+  result = (size: int64(f.size), link_count: int64(f.linkCount - 1), block_size: int64(when compiles(f.blockSize): f.blockSize else: 0))
 
 proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
