@@ -58,7 +58,7 @@ ACTIVE=true        # bool
 
 # Requisites
 
-- Python 1.x or 2.x or 3.x, 64Bit.
+- Python 1.x or 2.x or 3.x, 64Bit, CPython implementation.
 
 
 # PYPI
