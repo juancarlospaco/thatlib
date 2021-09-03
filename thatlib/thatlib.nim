@@ -1,7 +1,5 @@
 ## .. image:: https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png
-import std/[strutils, os], nimpy
-from std/json import JsonNode, newJInt, newJFloat, newJBool, newJString, newJObject, newJArray, add, parseJson, pretty
-from std/parseutils import parseSaturatedNatural, parseFloat
+import std/[strutils, os, sha1, md5, json, parseutils], nimpy
 
 proc cwd*(): string {.exportpy.} =
   getCurrentDir()
@@ -182,7 +180,7 @@ proc exists_create_dir*(path: string): bool {.exportpy.} =
 proc mkhardlink*(source, destination: string) {.exportpy.} =
   createHardlink(source, destination)
 
-proc get_size*(path: string) : BiggestInt {.exportpy.} =
+proc get_size*(path: string): BiggestInt {.exportpy.} =
   getFileSize(path)
 
 proc is_hidden_path*(path: string) : bool {.exportpy.} =
@@ -190,6 +188,12 @@ proc is_hidden_path*(path: string) : bool {.exportpy.} =
 
 func is_valid_path*(path: string) : bool {.exportpy.} =
   isValidFilename(path)
+
+proc get_md5*(path: string): string {.exportpy.} =
+  md5.getMD5(readFile(path))
+
+proc get_sha1*(path: string): string {.exportpy.} =
+  $secureHashFile(path)
 
 proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyFileWithPermissions(source, dest, ignore_errors)
