@@ -99,7 +99,7 @@ proc chmod*(path: string; permissions: uint) {.exportpy.} =
 
 
 proc is_root*(): bool {.exportpy.} =
-  os.isAdmin()
+  when defined(isAdmin): os.isAdmin()
 
 proc symlink*(source, destination: string) {.exportpy.} =
   os.createSymlink(source, destination)
