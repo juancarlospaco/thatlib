@@ -208,36 +208,28 @@ template bytes2human(integer_bytes: int64; result: var string) =
   (exa, peta) = divmod(peta, int64(1_024))
   (zetta, exa) = divmod(exa, int64(1_024))
   (yotta, zetta) = divmod(zetta, int64(1_024))
-  var thisByteUnit = newStringOfCap(80)
   if unlikely(zetta > 0):
-    thisByteUnit = $zetta
-    abytes(thisByteUnit, "Zetta")
-    result.add thisByteUnit
+    result.addInt zetta
+    abytes(result, "Zetta")
   if unlikely(exa > 0):
-    thisByteUnit = $exa
-    abytes(thisByteUnit, "Exa")
-    result.add thisByteUnit
+    result.addInt exa
+    abytes(result, "Exa")
   if unlikely(peta > 0):
-    thisByteUnit = $peta
-    abytes(thisByteUnit, "Peta")
-    result.add thisByteUnit
+    result.addInt peta
+    abytes(result, "Peta")
   if tera > 0:
-    thisByteUnit = $tera
-    abytes(thisByteUnit, "Tera")
-    result.add thisByteUnit
+    result.addInt tera
+    abytes(result, "Tera")
   if giga > 0:
-    thisByteUnit = $giga
-    abytes(thisByteUnit, "Giga")
-    result.add thisByteUnit
+    result.addInt giga
+    abytes(result, "Giga")
   if mega > 0:
-    thisByteUnit = $mega
-    abytes(thisByteUnit, "Mega")
-    result.add thisByteUnit
+    result.addInt mega
+    abytes(result, "Mega")
   if kilo > 0:
-    thisByteUnit = $kilo
-    abytes(thisByteUnit, "Kilo")
-    result.add thisByteUnit
-  result.add $bite
+    result.addInt kilo
+    abytes(result, "Kilo")
+  result.addInt bite
   abytes(result, "")
 
 proc get_size_human*(path: string): string {.exportpy.} =
