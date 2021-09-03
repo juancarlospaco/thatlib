@@ -201,9 +201,24 @@ proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.
 proc copy_dir_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyDirWithPermissions(source, dest, ignore_errors)
 
-proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, link_count, block_size: int64] {.exportpy.} =
+func fromFilePermissions(perm: set[FilePermission]): uint =
+  if fpUserExec in perm:    inc result, 0o100  # User
+  if fpUserWrite in perm:   inc result, 0o200
+  if fpUserRead in perm:    inc result, 0o400
+  if fpGroupExec in perm:   inc result, 0o010  # Group
+  if fpGroupWrite in perm:  inc result, 0o020
+  if fpGroupRead in perm:   inc result, 0o040
+  if fpOthersExec in perm:  inc result, 0o001  # Others
+  if fpOthersWrite in perm: inc result, 0o002
+  if fpOthersRead in perm:  inc result, 0o004
+
+proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, link_count, block_size, permissions: int64] {.exportpy.} =
   let f = os.getFileInfo(path, follow_symlinks)
-  result = (size: int64(f.size), link_count: int64(f.linkCount - 1), block_size: int64(when compiles(f.blockSize): f.blockSize else: 0))
+  result = (
+    size: int64(f.size), link_count: int64(f.linkCount - 1),
+    block_size: int64(when compiles(f.blockSize): f.blockSize else: 0),
+    permissions: int64(fromFilePermissions(f.permissions)),
+  )
 
 proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
