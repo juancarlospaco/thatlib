@@ -220,16 +220,13 @@ proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, lin
     permissions: int64(fromFilePermissions(f.permissions)),  # Permissions are Octal Unix.
   )
 
-proc get_file_times*(path: string; follow_symlinks: bool = true): tuple[last_access_unix, last_access_iso, last_write_unix, last_write_iso, creation_unix, creation_iso: string] {.exportpy.} =
+proc get_file_times_iso*(path: string; follow_symlinks: bool = true): tuple[last_access, last_write, creation: string] {.exportpy.} =
   let f = os.getFileInfo(path, follow_symlinks)
-  result = (
-    last_access_unix: $toUnix(f.lastAccessTime),
-    last_access_iso:  $f.lastAccessTime,
-    last_write_unix:  $toUnix(f.lastWriteTime),
-    last_write_iso:   $f.lastWriteTime,
-    creation_unix:    $toUnix(f.creationTime),
-    creation_iso:     $f.creationTime,
-  )
+  result = (last_access: $f.lastAccessTime, last_write: $f.lastWriteTime, creation: $f.creationTime)
+
+proc get_file_times_unix*(path: string; follow_symlinks: bool = true): tuple[last_access, last_write, creation: int64] {.exportpy.} =
+  let f = os.getFileInfo(path, follow_symlinks)
+  result = (last_access: toUnix(f.lastAccessTime), last_write: toUnix(f.lastWriteTime), creation: toUnix(f.creationTime))
 
 proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
   result = newSeqOfCap[string](prealloc)
