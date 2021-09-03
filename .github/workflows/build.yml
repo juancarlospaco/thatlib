@@ -56,9 +56,9 @@ jobs:
 
     - name: Compile (Unix)
       if: runner.os == 'Linux' || runner.os == 'macOS'
-      run: nim c --app:lib --gc:arc --out:$PACKAGE_NAME.so $MAIN_MODULE
+      run: nim c --app:lib --gc:arc --experimental:strictFuncs --out:$PACKAGE_NAME.so $MAIN_MODULE
 
 
     - name: Compile (Windows)
       if: runner.os == 'Windows'
-      run: nim c --app:lib --gc:arc --out:${{ env.PACKAGE_NAME }}.pyd ${{ env.MAIN_MODULE }}
+      run: nim c --app:lib --gc:arc --experimental:strictFuncs --out:${{ env.PACKAGE_NAME }}.pyd ${{ env.MAIN_MODULE }}
