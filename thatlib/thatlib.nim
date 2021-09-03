@@ -1,5 +1,5 @@
 ## .. image:: https://raw.githubusercontent.com/juancarlospaco/thatlib/nim/results_graph.png
-import std/[strutils, os, sha1, md5, json, parseutils], nimpy
+import std/[strutils, os, sha1, md5, json, parseutils, times], nimpy
 
 proc cwd*(): string {.exportpy.} =
   getCurrentDir()
@@ -201,7 +201,7 @@ proc copy_file_permissions*(source, dest: string; ignore_errors: bool = true) {.
 proc copy_dir_permissions*(source, dest: string; ignore_errors: bool = true) {.exportpy.} =
   copyDirWithPermissions(source, dest, ignore_errors)
 
-func fromFilePermissions(perm: set[FilePermission]): uint =
+func fromFilePermissions(perm: set[FilePermission]): uint {.inline.} =
   if fpUserExec in perm:    inc result, 0o100  # User
   if fpUserWrite in perm:   inc result, 0o200
   if fpUserRead in perm:    inc result, 0o400
@@ -217,7 +217,18 @@ proc get_file_info*(path: string; follow_symlinks: bool = true): tuple[size, lin
   result = (
     size: int64(f.size), link_count: int64(f.linkCount - 1),
     block_size: int64(when compiles(f.blockSize): f.blockSize else: 0),
-    permissions: int64(fromFilePermissions(f.permissions)),
+    permissions: int64(fromFilePermissions(f.permissions)),  # Permissions are Octal Unix.
+  )
+
+proc get_file_times*(path: string; follow_symlinks: bool = true): tuple[last_access_unix, last_access_iso, last_write_unix, last_write_iso, creation_unix, creation_iso: string] {.exportpy.} =
+  let f = os.getFileInfo(path, follow_symlinks)
+  result = (
+    last_access_unix: $toUnix(f.lastAccessTime),
+    last_access_iso:  $f.lastAccessTime,
+    last_write_unix:  $toUnix(f.lastWriteTime),
+    last_write_iso:   $f.lastWriteTime,
+    creation_unix:    $toUnix(f.creationTime),
+    creation_iso:     $f.creationTime,
   )
 
 proc walk*(folderpath: string; extensions: seq[string] = @[""]; followlinks : bool = false; yieldfiles: bool = true; debugs: bool = false; check_folders: bool = false; prealloc: Positive = 99): seq[string] {.exportpy.} =
