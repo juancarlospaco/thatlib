@@ -183,6 +183,66 @@ proc mkhardlink*(source, destination: string) {.exportpy.} =
 proc get_size*(path: string): BiggestInt {.exportpy.} =
   getFileSize(path)
 
+template divmod(a, b): array[2, int] =
+  [int(int(a) / int(b)), int(a mod b)]
+
+template abytes(stringy: var string; unit: static[string]) =
+  when len(unit) > 0:
+    stringy.add unit # "SOMETHINGbytes"
+    stringy.add 'b'
+  else:
+    stringy.add 'B'  # Just "Bytes"
+  stringy.add 'y'
+  stringy.add 't'
+  stringy.add 'e'
+  stringy.add 's'
+  stringy.add ' '
+
+template bytes2human(integer_bytes: int64; result: var string) =
+  var bite, kilo, mega, giga, tera, peta, exa, zetta, yotta: int64
+  (kilo, bite) = divmod(integer_bytes, int64(1_024))
+  (mega, kilo) = divmod(kilo, int64(1_024))
+  (giga, mega) = divmod(mega, int64(1_024))
+  (tera, giga) = divmod(giga, int64(1_024))
+  (peta, tera) = divmod(tera, int64(1_024))
+  (exa, peta) = divmod(peta, int64(1_024))
+  (zetta, exa) = divmod(exa, int64(1_024))
+  (yotta, zetta) = divmod(zetta, int64(1_024))
+  var thisByteUnit = newStringOfCap(80)
+  if unlikely(zetta > 0):
+    thisByteUnit = $zetta
+    abytes(thisByteUnit, "Zetta")
+    result.add thisByteUnit
+  if unlikely(exa > 0):
+    thisByteUnit = $exa
+    abytes(thisByteUnit, "Exa")
+    result.add thisByteUnit
+  if unlikely(peta > 0):
+    thisByteUnit = $peta
+    abytes(thisByteUnit, "Peta")
+    result.add thisByteUnit
+  if tera > 0:
+    thisByteUnit = $tera
+    abytes(thisByteUnit, "Tera")
+    result.add thisByteUnit
+  if giga > 0:
+    thisByteUnit = $giga
+    abytes(thisByteUnit, "Giga")
+    result.add thisByteUnit
+  if mega > 0:
+    thisByteUnit = $mega
+    abytes(thisByteUnit, "Mega")
+    result.add thisByteUnit
+  if kilo > 0:
+    thisByteUnit = $kilo
+    abytes(thisByteUnit, "Kilo")
+    result.add thisByteUnit
+  result.add $bite
+  abytes(result, "")
+
+proc get_size_human*(path: string): string {.exportpy.} =
+  bytes2human(getFileSize(path), result)
+
 proc is_hidden_path*(path: string) : bool {.exportpy.} =
   isHidden(path)
 
