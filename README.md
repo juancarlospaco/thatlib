@@ -70,11 +70,6 @@ ACTIVE=true        # bool
 - None.
 
 
-# Stars
-
-![](https://starchart.cc/juancarlospaco/thatlib.svg)
-
-
 # Sponsor this project
 
 <details> 
@@ -164,3 +159,8 @@ WM54DHVZQIQDVTHMPOH6FEZ4U2AU3OBPGAFTHSCYWMFE7ETKCUUOYAW24Q
   
 https://pay.binance.com/en/checkout/e92e536210fd4f62b426ea7ee65b49c3
 </details>
+
+
+# Stars
+
+![](https://starchart.cc/juancarlospaco/thatlib.svg)
