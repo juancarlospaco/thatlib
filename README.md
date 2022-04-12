@@ -169,3 +169,4 @@ https://pay.binance.com/en/checkout/e92e536210fd4f62b426ea7ee65b49c3
 :star: [@nikitavoloboev](https://github.com/nikitavoloboev '2022-02-16')	
 :star: [@mxschmitt](https://github.com/mxschmitt '2022-02-17')	
 :star: [@harrtho](https://github.com/harrtho '2022-02-17')	
+:star: [@kangkot](https://github.com/kangkot '2022-04-12')	
