@@ -70,7 +70,7 @@ ACTIVE=true        # bool
 - None.
 
 
-# Sponsor this project
+# 💰➡️🍕
 
 <details> 
 <summary title="Send Bitcoin"><kbd> Bitcoin BTC </kbd></summary>
@@ -83,10 +83,14 @@ ACTIVE=true        # bool
 ```
 1Pnf45MgGgY32X4KDNJbutnpx96E4FxqVi
 ```
+**Lightning Network**
+```
+juancarlospaco@bitrefill.me
+```  
 </details>
 
 <details> 
-<summary><kbd> Ethereum ETH </kbd> <kbd> Dai DAI </kbd> <kbd> Uniswap UNI </kbd> <kbd> Axie Infinity AXS </kbd> <kbd> Smooth Love Potion SLP </kbd> </summary>
+<summary title="Send Ethereum and DAI"><kbd> Ethereum ETH </kbd> <kbd> Dai DAI </kbd> <kbd> Uniswap UNI </kbd> <kbd> Axie Infinity AXS </kbd> <kbd> Smooth Love Potion SLP </kbd> <kbd> Uniswap UNI </kbd> <kbd> USDC </kbd> </summary>
 
 **BEP20 Binance Smart Chain Network BSC**
 ```
@@ -112,6 +116,28 @@ ACTIVE=true        # bool
 ```
 TWGft53WgWvH2mnqR8ZUXq1GD8M4gZ4Yfu
 ```
+</details>
+<details> 
+<summary title="Send Terra"><kbd> Terra UST </kbd></summary>
+
+**BEP20 Binance Smart Chain Network BSC**
+```
+0xb78c4cf63274bb22f83481986157d234105ac17e
+```
+**Terra Network**
+```
+terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5
+```
+- Memo ` 108340023 `
+</details>
+<details> 
+<summary title="Send Luna"><kbd> LUNA </kbd></summary>
+
+**Terra Network**
+```
+terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5
+```
+- Memo ` 108340023 `
 </details>
 <details> 
 <summary title="Send Solana"><kbd> Solana SOL </kbd></summary>
@@ -153,11 +179,22 @@ DdzFFzCqrht9Y1r4Yx7ouqG9yJNWeXFt69xavLdaeXdu4cQi2yXgNWagzh52o9k9YRh3ussHnBnDrg7v
 WM54DHVZQIQDVTHMPOH6FEZ4U2AU3OBPGAFTHSCYWMFE7ETKCUUOYAW24Q
 ```
 </details>
+<details> 
+<summary title="Send Polkadot"><kbd> Polkadot DOT </kbd></summary>
 
+**DOT Network**
+```
+13GdxHQbQA1K6i7Ctf781nQkhQhoVhGgUnrjn9EvcJnYWCEd
+```
+**BEP20 Binance Smart Chain Network BSC**
+```
+0xb78c4cf63274bb22f83481986157d234105ac17e
+```  
+</details>
 <details> 
 <summary title="Send via Binance Pay"> Binance </summary>
   
-https://pay.binance.com/en/checkout/e92e536210fd4f62b426ea7ee65b49c3
+[https://pay.binance.com/en/checkout/e92e536210fd4f62b426ea7ee65b49c3](https://pay.binance.com/en/checkout/e92e536210fd4f62b426ea7ee65b49c3 "Send via Binance Pay")
 </details>
 
 
