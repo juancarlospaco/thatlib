@@ -186,3 +186,4 @@ WM54DHVZQIQDVTHMPOH6FEZ4U2AU3OBPGAFTHSCYWMFE7ETKCUUOYAW24Q
 :star: [@harrtho](https://github.com/harrtho '2022-02-17')	
 :star: [@kangkot](https://github.com/kangkot '2022-04-12')	
 :star: [@crox-safe](https://github.com/crox-safe '2022-04-13')	
+:star: [@carno](https://github.com/carno '2022-06-01')	
