@@ -188,3 +188,4 @@ WM54DHVZQIQDVTHMPOH6FEZ4U2AU3OBPGAFTHSCYWMFE7ETKCUUOYAW24Q
 :star: [@crox-safe](https://github.com/crox-safe '2022-04-13')	
 :star: [@carno](https://github.com/carno '2022-06-01')	
 :star: [@xdroff](https://github.com/xdroff '2022-06-01')	
+:star: [@tumregels](https://github.com/tumregels '2022-06-18')	
