@@ -66,5 +66,9 @@ jobs:
 
     - name: PIP install via Nimporter
       run: |
-        pip install nimporter
+        git clone https://github.com/Pebaz/nimporter.git
+        cd nimporter
+        git checkout nimporter-v2.0.0rc
+        pip --verbose --debug install .
+        cd
         pip --verbose --debug install .
