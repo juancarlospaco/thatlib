@@ -35,7 +35,7 @@ jobs:
       with:
         NIMPORTER_INSTRUMENT:  true
         PACKAGE_NAME:          "thatlib"
-        MAIN_MODULE:           "thatlib/thatlibcore.nim"
+        MAIN_MODULE:           "thatlib/thatlib.nim"
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 
