@@ -64,12 +64,16 @@ jobs:
       run: nim c --app:lib --gc:arc --experimental:strictFuncs --out:${{ env.PACKAGE_NAME }}.pyd ${{ env.MAIN_MODULE }}
 
 
-    - name: PIP install via Nimporter
+    - name: Install Nimporter
       run: |
         git clone https://github.com/Pebaz/nimporter.git
         cd nimporter/
         git checkout nimporter-v2.0.0rc
         python setup.py install
-        cd
+        cd ..
         rm --force --recursive nimporter/
+
+
+    - name: Install via Nimporter
+      run: |
         python setup.py install
