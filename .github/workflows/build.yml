@@ -65,4 +65,6 @@ jobs:
 
 
     - name: PIP install via Nimporter
-      run: pip --verbose --debug install .
+      run: |
+        pip install nimporter
+        pip --verbose --debug install .
