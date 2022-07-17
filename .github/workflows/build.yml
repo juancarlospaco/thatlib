@@ -34,7 +34,7 @@ jobs:
       uses: allenevans/set-env@v2.0.0
       with:
         PACKAGE_NAME:          "thatlib"
-        MAIN_MODULE:           "thatlib/thatlib.nim"
+        MAIN_MODULE:           "thatlib/thatlibcore.nim"
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 
@@ -62,3 +62,7 @@ jobs:
     - name: Compile (Windows)
       if: runner.os == 'Windows'
       run: nim c --app:lib --gc:arc --experimental:strictFuncs --out:${{ env.PACKAGE_NAME }}.pyd ${{ env.MAIN_MODULE }}
+
+
+    - name: PIP install via Nimporter
+      run: pip --verbose --debug install .
