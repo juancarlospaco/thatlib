@@ -83,4 +83,4 @@ jobs:
 
     - name: Import Thatlib
       run: |
-        python -e "import thatlib ; thatliob.cwd()"
+        python -c "import thatlib ; print(thatlib.cwd())"
