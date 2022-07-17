@@ -69,6 +69,6 @@ jobs:
         git clone https://github.com/Pebaz/nimporter.git
         cd nimporter
         git checkout nimporter-v2.0.0rc
-        pip --verbose --debug install .
+        python setup.py install
         cd
         pip --verbose --debug install .
