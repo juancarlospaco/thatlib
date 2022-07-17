@@ -66,6 +66,7 @@ jobs:
 
 
     - name: Install Nimporter
+      shell: bash
       run: |
         git clone https://github.com/Pebaz/nimporter.git
         cd nimporter/
