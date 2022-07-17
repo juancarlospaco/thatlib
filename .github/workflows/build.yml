@@ -79,3 +79,8 @@ jobs:
     - name: Install Thatlib
       run: |
         python setup.py install
+
+
+    - name: Import Thatlib
+      run: |
+        python -e "import thatlib ; thatliob.cwd()"
