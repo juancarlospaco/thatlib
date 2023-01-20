@@ -193,3 +193,4 @@ WM54DHVZQIQDVTHMPOH6FEZ4U2AU3OBPGAFTHSCYWMFE7ETKCUUOYAW24Q
 :star: [@Siss3l](https://github.com/Siss3l '2022-11-19')	
 :star: [@daweedkob](https://github.com/daweedkob '2022-11-19')	
 :star: [@xilicode](https://github.com/xilicode '2022-11-25')	
+:star: [@pietroppeter](https://github.com/pietroppeter '2023-01-20')	
